@@ -7,7 +7,7 @@ db.once('open', () => {
   console.log('Connected at MongoDB.');
   const port = environment.server.port;
 
-  app.listen(port, function() {
+  app.listen(port, () => {
     console.log(`api listening on port ${port}`);
   });
 });

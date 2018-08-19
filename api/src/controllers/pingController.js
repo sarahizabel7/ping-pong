@@ -10,8 +10,19 @@ exports.registerPing = (req, res) => {
 exports.getTotalPings = (req, res) => {
   Ping.countDocuments({}, (err, totalPings) => {
     if(err) {
+      console.log(err.toString());
       return res.status(500).json({message: "Server Error"});
     }
     res.status(200).json({message: totalPings});
+  });
+};
+
+exports.deletePings = (req, res) => {
+  Ping.deleteMany({}, (err) => {
+    if(err) {
+      console.log(err.toString());
+      return res.status(500).json({message: "Server Error."});
+    }
+    res.status(200).json({message: "Data cleared."});
   });
 };
