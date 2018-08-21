@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "downloadDependencies": "npm i && cd ./api && npm i && cd ../bot && npm i",
-    "start": "./node_modules/.bin/pm2 start ./api/server.js --name api && node ./bot/server.js",
-    "stop": "./node_modules/.bin/pm2 stop all",
-    "log": "./node_modules/.bin/pm2 logs api"
+    "startApi": "pm2 start ./api/server.js --name api",
+    "stop": "pm2 stop all",
+    "log": "pm2 logs api"
   },
   "repository": {
     "type": "git",
@@ -20,6 +19,10 @@
   },
   "homepage": "https://github.com/sarahizabel7/ping-pong#readme",
   "dependencies": {
-    "pm2": "^3.0.3"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.9",
+    "prompt": "^1.0.0",
+    "request": "^2.88.0"
   }
 }

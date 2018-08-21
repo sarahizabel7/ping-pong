@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000" 
+      - "8080:8080" 
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    networks: 
+      - all
+    environment:
+      MONGODB_URI: "mongodb://mongo:27017/ping"
+      URL_API: "http://localhost:3000"
+  mongo:
+    image: mongo 
+    ports:
+    - "27017:27017"  
+    volumes:
+    - './data:/data/db'
+    networks: 
+      - all
+networks:
+  all:

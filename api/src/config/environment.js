@@ -1,11 +1,8 @@
-let dbUser = process.env.DB_USER;
-let dbPass = process.env.DB_PASS;
-
 module.exports = {
   server: {
-    port: process.env.SERVER_PORT || 3000 
+    port: process.env.API_PORT || 3000 
   },
   db: { 
-    url: dbUser && dbPass && `mongodb://${dbUser}:${dbPass}@localhost/ping` || 'mongodb://localhost/ping'
+    url: process.env.MONGODB_URI || 'mongodb://localhost:27017/ping'
   }
 };

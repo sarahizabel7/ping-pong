@@ -2,7 +2,7 @@ const http = require('http');
 const prompt = require('prompt');
 const apiHandler = require('./apiHandler');
 
-http.createServer().listen(process.env.SERVER_PORT || 8080);
+http.createServer().listen(process.env.BOT_PORT || 8080);
 
 startRobot = async () => {
   try {

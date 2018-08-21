@@ -1,0 +1,14 @@
+{
+  "apps": [{
+    "name": "api",
+    "script": "./api/server.js",
+    "instances": 1,
+    "exec_mode": "cluster",
+    "watch"       : false,
+    "args"        : [],
+    "log_date_format" : "YYYY-MM-DD HH:mm Z",
+    "node_args"   : "",
+    "merge_logs"  : false,
+    "cwd"         : "./"
+  }]
+}
