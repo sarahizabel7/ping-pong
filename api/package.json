@@ -1,0 +1,26 @@
+{
+  "name": "ping-pong",
+  "version": "1.0.0",
+  "description": "Ping Pong API",
+  "main": "index.js",
+  "scripts": {
+    "startApi": "pm2 start ./api/server.js --name api",
+    "stop": "pm2 stop all",
+    "log": "pm2 logs api"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarahizabel7/ping-pong.git"
+  },
+  "author": "sarah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sarahizabel7/ping-pong/issues"
+  },
+  "homepage": "https://github.com/sarahizabel7/ping-pong#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.9"
+  }
+}

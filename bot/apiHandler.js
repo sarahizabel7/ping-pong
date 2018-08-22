@@ -1,4 +1,4 @@
-const request = require('request');
+const axios = require('axios');
 const baseUrl = process.env.URL_API || 'http://localhost:3000';
 
 exports.requestApiInLots = (numberOfRequests, numberOfLots) => {
@@ -14,7 +14,7 @@ exports.requestApiInLots = (numberOfRequests, numberOfLots) => {
   });
 };
 
-handleLot = (numberOfReqsPerLot) => {
+handleLot = numberOfReqsPerLot => {
   return new Promise(async (resolve, reject) => {
     try {
       let listOfRequests = [];
@@ -29,29 +29,18 @@ handleLot = (numberOfReqsPerLot) => {
 };
 
 sendPing = () => {
-  return new Promise((resolve, reject) => {
-    request.post(`${baseUrl}/ping`, (err, res) => {
-      if(err) return reject(err);
-      resolve();
-    });
-  });
+  return axios.post(`${baseUrl}/ping`);   
 };
 
-exports.getNumberOfPings = () => {
-  return new Promise((resolve, reject) => {
-    request.get(`${baseUrl}/pong/total`, (err, res, body) => {
-      if(err) return reject(err);
-      let numberOfPings = JSON.parse(body).message;
-      resolve(numberOfPings);
-    });
-  });
+exports.getNumberOfPings = async () => {
+    try {
+      let request = await axios.get(`${baseUrl}/pong/total`); 
+      return request.data.message;
+    } catch(err) {
+      throw err;
+    }
 };
 
 exports.deletePings = () => {
-  return new Promise((resolve, reject) => {
-    request.delete(`${baseUrl}/pings`, (err, res) => {
-      if(err) return reject(err);
-      resolve();
-    });
-  });
+  return axios.delete(`${baseUrl}/pings`);
 };

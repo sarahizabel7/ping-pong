@@ -1,8 +1,8 @@
 version: '2.1'
 
 services:
-  app:
-    build: .
+  api:
+    build: ./api
     ports:
       - "3000:3000" 
     links:
@@ -14,7 +14,13 @@ services:
       - all
     environment:
       MONGODB_URI: "mongodb://mongo:27017/ping"
-      URL_API: "http://localhost:3000"
+  bot:
+    build: ./bot
+    networks: 
+      - all
+    environment:
+      URL_API: "http://api:3000"
+    command: tail -F anything
   mongo:
     image: bitnami/mongodb:3.6 
     ports:
