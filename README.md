@@ -60,20 +60,20 @@ $ ./commands.sh up
 
 Segue abaixo algumas explicações sobre o funcionamento do projeto
 
-###API
+### API
 
 * Roda na porta 3000
-* POST para /ping: salva em um documento do MongoDB o registro de que houve um ping, e devolve "pong"
-* GET para /pong/total: devolve um JSON com o total de pings registrados
+* **POST para /ping:** salva em um documento do MongoDB o registro de que houve um ping, e devolve "pong"
+* **GET para /pong/total:** devolve um JSON com o total de pings registrados
 
-###Bot
+### Bot
 
 * Captura o número de requisições e de lotes inseridos no prompt (número mínimo de requisição: 10000, número mínimo de lotes: 3)
-* Realiza requisições em lotes paralelos para o POST /ping
+* Realiza requisições em lotes paralelos para o **POST /ping**
 * Contabiliza quantos segundos levou o processo
-* Compara o número de requisições enviadas com o valor retornado no GET /pong/total
+* Compara o número de requisições enviadas com o valor retornado no **GET /pong/total**
 
-###Docker
+### Docker
 
 Foram criadas 3 imagens:
 
