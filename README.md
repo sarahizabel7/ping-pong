@@ -1,14 +1,16 @@
 # Ping Pong
 
-Projeto para análise de envio de requisições em lotes configuráveis, a fim de uma análise comparativa (benchmark).
+Project for analysis of the submission of configurable batch requests, for a benchmark analysis.
 
-O projeto envolve duas aplicações:
-* Um **Bot** que dispara requisições em lotes na API
-* Uma **API** que lida com requisições do Bot
+___
 
-A estrutura do projeto foi configurada em um **Docker**.
+The project involves two applications:
+* A **Bot** that triggers batch requests on API
+* An **API** that handles the bot requests
 
-## Tecnologias utilizadas
+The project structure has been configured in a **Docker**.
+
+## Technologies Used
 
 * NodeJS
 * MongoDB
@@ -17,65 +19,64 @@ A estrutura do projeto foi configurada em um **Docker**.
 
 ## Getting Started
 
-Segue abaixo instruções para rodar o projeto.
+Follow the instructions below to run the project
 
 ### Requisitos
 
 * [Docker](https://docs.docker.com/install/) 
 * [Docker-compose](https://docs.docker.com/compose/install/) 
 
-### Rodando o Projeto
+### Running the project
 
 ```
 $ ./commands.sh start
 ```
 
-### Comandos disponíveis
+### Available commands
 
-Rodar o projeto
+Run the project
 
 ```
 $ ./commands.sh start
 ```
 
-Rodar somente o Bot
+Run the Bot only
 
 ```
 $ ./commands.sh runbot
 ```
 
-Buildar as imagens
+Build the images
 
 ```
 $ ./commands.sh build
 ```
 
-Subir os containers e rodá-los em background
-
+Start the containers and run them in the background
 ```
 $ ./commands.sh up
 ```
 
-## Funcionamento
+## Behavior
 
-Segue abaixo algumas explicações sobre o funcionamento do projeto
+Here are some explanations about how the project works:
 
 ### API
 
-* Roda na porta 3000
-* **POST para /ping:** salva em um documento do MongoDB o registro de que houve um ping, e devolve "pong"
-* **GET para /pong/total:** devolve um JSON com o total de pings registrados
+* Runs on port 3000
+* **POST para /ping:** saves in a MongoDB document the record that there was a ping, and returns "pong"
+* **GET para /pong/total:** returns a JSON with the total of registered pings
 
 ### Bot
 
-* Captura o número de requisições e de lotes inseridos no prompt (número mínimo de requisição: 10000, número mínimo de lotes: 3)
-* Realiza requisições em lotes paralelos para o **POST /ping**
-* Contabiliza quantos segundos levou o processo
-* Compara o número de requisições enviadas com o valor retornado no **GET /pong/total**
+* Capture the number of requests and batches entered at the prompt (minimum requisition number: 10000, minimum number of batches: 3)
+* Performs requests in parallel batches in **POST /ping**
+* Count how many seconds the process took
+* Compare the number of requests sent with the value returned in **GET /pong/total**
 
 ### Docker
 
-Foram criadas 3 imagens:
+3 images were created:
 
 * api
 * bot
